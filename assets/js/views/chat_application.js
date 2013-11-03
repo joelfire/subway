@@ -120,8 +120,7 @@ var ChatApplicationView = Backbone.View.extend({
     // and the page is hidden (to prevent annoyingness)
     // Permissions should be granted in the settings window @ home
     // This should be done only once per domain
-    if ((document.webkitHidden === true || document.webkitHidden === undefined) 
-        && window.webkitNotifications.checkPermission() == 0) {
+    if (!document.hasFocus() && window.webkitNotifications.checkPermission() == 0) {
 
       // This builds the message title, according to the type of message.
       var messageTitle = _.isEqual(msg.get('type'), "pm") ? "PM from " : "Mention in ";

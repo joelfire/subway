@@ -40,65 +40,18 @@ script(id="overview_connection", type="text/html")
       label(for="connect-nick") Nick
       input#connect-nick(type="text")
     .control-group
-      label(for="connect-server") Server
-      input#connect-server(type="text")
-    .control-group
-      label(for="connect-password") Password (optional)
-      input#connect-password(type="password")
-    .control-group
-      label(for="connect-realName") Real Name
+      label(for="connect-realName") Email
       input#connect-realName(type="text")
     .control-group
       label(for="connect-remember") Remember Me
       input#connect-remember(type="checkbox",checked="checked")
-    .connect-more-options.hide
-      .control-group
-        label(for="connect-port") Port
-        input#connect-port.input-small(type="text", placeholder="6667")
-      .control-group
-        label(for="connect-secure") SSL
-        input#connect-secure(type="checkbox")
-      .control-group#ssl-self-signed
-        label(for="connect-selfSigned") Allow Self-signed Certs
-        input#connect-selfSigned(type="checkbox")
-      .control-group
-        label(for="connect-away") Away Message
-        input#connect-away(type="text", placeholder="AFK")
-      .control-group
-        label(for="connect-encoding") Encoding
-        select#connect-encoding
-          option(value="", selected="selected") UTF-8
-          option(disabled="disabled") --------------
-          option(value="ISO-8859-1") ISO-8859-1
-          option(value="ISO-8859-15") ISO-8859-15
-          option(value="ISO-8859-2") ISO-8859-2
-          option(value="ISO-8859-7") ISO-8859-7 (Greek)
-          option(value="ISO-8859-8") ISO-8859-8 (Hebrew)
-          option(value="ISO-8859-9") ISO-8859-9 (Turkish)
-          option(value="ISO-8859-11") ISO-8859-11 (Thai)
-          option(disabled="disabled") --------------
-          option(value="ISO-2022-JP") ISO-2022-JP (Japanese)
-          option(value="CP949") CP949 (Korean)
-          option(value="EUC-KR") EUC-KR (Korean)
-          option(value="GBK") GBK (Chinese)
-          option(value="GB18030") GB18030 (Chinese)
-          option(value="BIG5") BIG5 (Chinese)
-          option(disabled="disabled") --------------
-          option(value="KOI8-U") KOI8-U (Ukrainian)
-          option(value="KOI8-R") KOI8-R (Cyrillic)
-          option(value="CP1251") CP1251 (Cyrillic)
-          option(value="CP1256") CP1256 (Arabic)
-          option(value="CP1257") CP1257 (baltic)
-      .control-group
-        label(for="connect-stripColors") No Colors
-        input#connect-stripColors(type="checkbox")
     .control-group
-      {{#loggedIn}}
-      label.checkbox(for="connect-keep-alive", style="width:100%") Keep connection alive after browser closed
-        input#connect-keep-alive(type="checkbox")
-      {{/loggedIn}}
+      label(for="connect-away") Away Message
+      input#connect-away(type="text", placeholder="AFK")
+    .control-group
+      label(for="connect-stripColors") No Colors
+      input#connect-stripColors(type="checkbox")
     a(id="connect-button", class="btn btn-primary spacing-right", type="button") Connect
-    a(id="connect-more-options-button", class="btn", type="button") More Options
 
 script(id="overview_settings", type="text/html")
   #home_parent

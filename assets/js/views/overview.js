@@ -63,17 +63,18 @@ var OverviewView = Backbone.View.extend({
     event.preventDefault();
     $('.error').removeClass('error');
 
-    var server = $('#connect-server').val(),
+    var server = 'irc.penthouse.datasynapse.com',
     nick = $('#connect-nick').val(),
-    port = $('#connect-port').val(),
+    port = '7654',
     away = $('#connect-away').val(),
     realName = $('#connect-realName').val() || nick,
-    secure = $('#connect-secure').is(':checked'),
-    selfSigned = $('#connect-selfSigned').is(':checked'),
-    password = $('#connect-password').val(),
-    encoding = $('#connect-encoding').val(),
+    secure = false,
+    selfSigned = false,
+    password = '',
+    encoding = 'UTF-8',
     stripColors = $('#connect-stripColors').is(':checked'),
     keepAlive = false;
+    rememberMe = $('#connect-remember').attr('checked');
     
     if (!server) {
       $('#connect-server').closest('.control-group').addClass('error');
@@ -83,8 +84,8 @@ var OverviewView = Backbone.View.extend({
       $('#connect-nick').closest('.control-group').addClass('error');
     }
 
-    if (irc.loggedIn && $('#connect-keep-alive').length) {
-      keepAlive = $('#connect-keep-alive').is(':checked');
+    if (irc.loggedIn ) {
+      keepAlive = true;
     }
     
     if (nick && server) {
@@ -110,7 +111,7 @@ var OverviewView = Backbone.View.extend({
       irc.socket.emit('connect', connectInfo);
 
       // Save standard settings in session storage.
-      if ($('#connect-remember').attr('checked')) {
+      if (rememberMe) {
         sessionStorage.setItem('nick', nick);
         sessionStorage.setItem('realName', realName);
         sessionStorage.setItem('server', server);
@@ -157,7 +158,7 @@ var OverviewView = Backbone.View.extend({
   },
 
   toggle_ssl_options: function(event) {
-    var port = $('#connect-secure').is(':checked') ? 6697 : 6667 ;
+    var port = $('#connect-secure').is(':checked') ? 6697 : 7654 ;
     $('#connect-port').attr('placeholder', port);
     $('#ssl-self-signed').toggle();
   }

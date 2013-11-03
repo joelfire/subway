@@ -59,10 +59,22 @@ var ChatWindow = Backbone.Model.extend({
     if (this.get('active')) return;
     var signal = false;
     // Increment unread messages
-    if(msg.get('type') === 'message' || msg.get('type') === 'pm'){
+    // Increment unread messages
+    if(msg.get('type') === 'message' || msg.get('type') === 'pm' || msg.get('type') === 'notice'){
       this.set({unread: this.get('unread') + 1});
     }
-    if (this.get('type') === 'pm') signal = true;
+    if (msg.get('type') === 'pm') {
+      signal = true;
+    }
+    if (msg.get('type') === 'notice') {
+      signal = true;
+      msg.set('text', '[notice] ' + msg.get('text'));
+    }
+    if (msg.get('type') === 'message') {
+      if (msg.get('text').indexOf('@all') != -1 ) {
+          signal = true;
+      }
+    } 
     if (msg.get('mention')) {
       this.set({unreadMentions: this.get('unreadMentions') + 1});
       signal = true;
