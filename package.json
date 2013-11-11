@@ -22,7 +22,8 @@
     "bcrypt-nodejs": "0.0.x",
     "jugglingdb-sqlite3": "0.0.x",
     "jugglingdb": "0.2.x",
-    "node-uuid": "1.4.x"
+    "node-uuid": "1.4.x",
+    "nodemailer": "0.5.x"
   },
   "scripts": {
     "start": "subway"

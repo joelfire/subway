@@ -135,6 +135,8 @@ var OverviewView = Backbone.View.extend({
 
     var username = $('#' + action + '-username').val();
     var password = $('#' + action + '-password').val();
+    var email = $('#' + action + '-email').val();
+    var idleTimeout = $('#' + action + '-idleTimeout').val();
  
     if (!username) {
       $('#' + action + '-username').closest('.clearfix').addClass('error');
@@ -145,15 +147,27 @@ var OverviewView = Backbone.View.extend({
       $('#' + action + '-password').closest('.clearfix').addClass('error');
       $('#login-password').addClass('error');
     }
-    
-    if(username && password){
+
+    if (!email) {
+      $('#' + action + '-email').closest('.clearfix').addClass('error');
+      $('#' + action + '-email').addClass('error');
+    }
+
+    if (isNaN(parseInt(idleTimeout))) {
+      $('#' + action + '-idleTimeout').closest('.clearfix').addClass('error');
+      $('#' + action + '-idleTimeout').addClass('error');
+    }
+
+    if(username && password && email && idleTimeout) {
       $('form').append(ich.load_image());
       $('#' + action + '-button').addClass('disabled');
     }
 
     irc.socket.emit(action, {
       username: username,
-      password: password
+      password: password,
+      email: email,
+      idleTimeout: idleTimeout
     });
   },
 

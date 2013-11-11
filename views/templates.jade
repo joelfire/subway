@@ -40,7 +40,7 @@ script(id="overview_connection", type="text/html")
       label(for="connect-nick") Nick
       input#connect-nick(type="text")
     .control-group
-      label(for="connect-realName") Email
+      label(for="connect-realName") Real Name
       input#connect-realName(type="text")
     .control-group
       label(for="connect-remember") Remember Me
@@ -82,6 +82,12 @@ script(id="overview_register", type="text/html")
     .control-group
       label(for="register-password") Password
       input#register-password(type="password")
+    .control-group
+      label(for="register-email") Email
+      input#register-email(type="text")
+    .control-group
+      label(for="register-idleTimeout") Idle Timeout
+      input#register-idleTimeout(type="text", placeholder="300")
     a(id="register-button", class="btn btn-primary", type="button") Register
 
 script(id="titlebar", type="text/html")
