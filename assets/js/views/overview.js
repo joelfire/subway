@@ -153,9 +153,7 @@ var OverviewView = Backbone.View.extend({
       $('#' + action + '-email').addClass('error');
     }
 
-    if (!idleTimeout) {
-        idleTimeout="300";
-    } else if (isNaN(parseInt(idleTimeout))) {
+    if (isNaN(parseInt(idleTimeout))) {
       $('#' + action + '-idleTimeout').closest('.clearfix').addClass('error');
       $('#' + action + '-idleTimeout').addClass('error');
     }
