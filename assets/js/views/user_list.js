@@ -47,9 +47,27 @@ var UserListView = Backbone.View.extend({
     return this;
   },
 
-  add: function(User) {
-    var userView = new UserView({model: User});
-    User.view = userView;
-    $(this.el).append(userView.render().el);
-  }
+	  add : function(User) {
+		var userView = new UserView({
+			model : User
+		});
+		User.view = userView;
+		children = $(this.el).children();
+		before = null;
+		name1 = User.attributes['nick'].toUpperCase();
+		for (i = 0; i < children.length; i++) {
+		    userlist_user = children[i];
+			userlist_user_info = userlist_user.children[1];
+			name2 = userlist_user_info.innerText.toUpperCase();
+			if (name1 < name2) {
+				before = userlist_user; 
+				break;
+			}
+		}
+		if (before == null) {
+			$(this.el).append(userView.render().el);
+		} else {
+			$(userView.render().el).insertBefore(before);
+		}
+	}
 });
