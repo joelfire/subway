@@ -55,15 +55,13 @@ var UserListView = Backbone.View.extend({
 		children = $(this.el).children();
 		before = null;
 		name1 = User.attributes['nick'].toUpperCase();
-		for (i = 0; i < children.length; i++) {
-		    userlist_user = children[i];
-			userlist_user_info = userlist_user.children[1];
-			name2 = userlist_user_info.innerText.toUpperCase();
+		$(children).each(function( index ) {
+			name2 = $(this).text().toUpperCase();
 			if (name1 < name2) {
-				before = userlist_user; 
-				break;
+				before = this; 
+				return false;
 			}
-		}
+		});
 		if (before == null) {
 			$(this.el).append(userView.render().el);
 		} else {
