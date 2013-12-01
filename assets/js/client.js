@@ -453,6 +453,11 @@ $(function() {
   irc.commands.alias('wc', 'part');
   irc.commands.alias('close', 'part');
 
+  // on /list, send 'list' command to server, which is processed by socket.js 
+  irc.commands.add('list', function(args){
+      irc.socket.emit('list', null);
+	});
+
   irc.commands.add('nick', function(args){
     if (args[0]) {
       irc.socket.emit('nick', {nick : args[0]});
